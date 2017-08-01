@@ -1,9 +1,12 @@
 package com.example.teepopr.testsearchamata;
 
+import com.example.teepopr.testsearchamata.dao.ResponseDao;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -36,8 +39,9 @@ class HttpManager {
     }
 
     interface Service {
+        @Headers("Authorization: Basic YWRtaW5AaG90bWFpbC5jb206YWRtaW4=")
         @GET("search.php")
-        Observable<String> getMapSearch(@Query("query") String query, @Query("key") String key);
+        Observable<ResponseDao> getMapSearch(@Query("query") String query, @Query("key") String key);
     }
 
     //API_KEY = amata_admin
